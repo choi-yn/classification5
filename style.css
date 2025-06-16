@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.food-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
+    margin-bottom: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.food-item {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    cursor: move;
+    transition: transform 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.food-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.food-item img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.bowls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.bowl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bowl-area {
+    width: 112px;
+    height: 90px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.bowl-area[data-type="carbohydrate"] {
+    background-image: url('images/탄수화물\ 그릇.gif');
+}
+
+.bowl-area[data-type="vitamin"] {
+    background-image: url('images/비타민\ 그릇.gif');
+}
+
+.bowl-area[data-type="protein"] {
+    background-image: url('images/단백질\ 그릇.gif');
+}
+
+.bowl-area[data-type="fat"] {
+    background-image: url('images/지방\ 그릇.gif');
+}
+
+.bowl-area[data-type="calcium"] {
+    background-image: url('images/칼슘\ 그릇.gif');
+}
+
+.bowl-area.drag-over {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: #666;
+}
+
+.nutrient-btn {
+    padding: 3px 8px;
+    margin: 2px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nutrient-btn[data-nutrient="비타민"] {
+    background-color: #98FB98;
+}
+
+.nutrient-btn[data-nutrient="탄수화물"] {
+    width: 70px;
+    min-width: 0;
+    background-color: #FFA500;
+    white-space: nowrap;
+}
+
+.nutrient-btn[data-nutrient="단백질"] {
+    background-color: #9370DB;
+}
+
+.nutrient-btn[data-nutrient="지방"] {
+    background-color: #FFC0CB;
+}
+
+.nutrient-btn[data-nutrient="칼슘"] {
+    background-color: #B0E0E6;
+}
+
+.nutrient-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.score {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.restart-btn {
+    padding: 8px 16px;
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.restart-btn i {
+    font-size: 18px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.dragging {
+    opacity: 0.5;
+    transform: scale(1.1);
+    z-index: 1000;
+} 
